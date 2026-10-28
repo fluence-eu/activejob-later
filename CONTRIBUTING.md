@@ -25,12 +25,12 @@ Requires Ruby 3.2+.
 ### Running tests and linting
 
 ```bash
-bundle exec fluence-ci all              # full catalog (lint + security + codequality + docs + tests)
-bundle exec fluence-ci lint             # rubocop only
-bundle exec fluence-ci tests            # minitest only
-bundle exec fluence-ci docs --report    # yardstick threshold check
-bundle exec rubocop -a                  # auto-fix linting (no fluence-ci equivalent)
-bundle exec fluence-ci docs --build     # generate YARD HTML in doc/
+bundle exec guardian-ci all             # full catalog (lint + security + codequality + docs + tests)
+bundle exec guardian-ci lint            # rubocop only
+bundle exec guardian-ci tests           # minitest only
+bundle exec guardian-ci docs --report   # yardstick threshold check
+bundle exec rubocop -a                  # auto-fix linting (no guardian-ci equivalent)
+bundle exec guardian-ci docs --build    # generate YARD HTML in doc/
 ```
 
 ---

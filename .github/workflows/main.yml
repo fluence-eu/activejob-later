@@ -7,20 +7,11 @@ on:
 
   pull_request:
 
-# Authenticate `bundle install` (triggered by ruby/setup-ruby's
-# bundler-cache: true) against GitHub Packages so private Fluence
-# gems (fluence-ci-tools) can be fetched. Combined with
-# `permissions: packages: read` on each job, the GITHUB_TOKEN gains
-# the scope needed and Bundler picks the credentials up via this env.
-env:
-  BUNDLE_RUBYGEMS__PKG__GITHUB__COM: x-access-token:${{ secrets.GITHUB_TOKEN }}
-
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: read
 
     name: Ruby ${{ matrix.ruby }}
     strategy:
