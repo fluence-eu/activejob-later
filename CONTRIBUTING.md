@@ -145,7 +145,8 @@ GitHub Actions:
 - **rubocop-measure.yml**, **rubocop-pr.yml** — RuboCop offense baseline + sticky offense-delta comment on PRs
 - **coverage-measure.yml**, **coverage-pr.yml** — coverage baseline + undercover regression check
 - **codequality-measure.yml**, **codequality-pr.yml** — reek/flog/flay advisory deltas
-- **prepare-release.yml** — `workflow_dispatch` bump (patch/minor/major) opens an auto-merged release PR
+- **claude-review-pr.yml** — Claude review on every PR
+- **prepare-release.yml** — `workflow_dispatch` stamps a dated version (`YYYY.MM.DD.HHMMSS`) and opens an auto-merged release PR
 - **release.yml** — on release PR merge, creates the tag + GitHub Release with the `.gem` attached
 - **publish.yml** — on Release published, pushes the gem to GitHub Packages
 

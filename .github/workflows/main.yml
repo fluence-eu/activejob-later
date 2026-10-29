@@ -15,6 +15,7 @@ jobs:
 
     name: Ruby ${{ matrix.ruby }}
     strategy:
+      fail-fast: false
       matrix:
         ruby:
           # 4.0 is covered by coverage-measure.yml (test) and
@@ -22,14 +23,21 @@ jobs:
           # Rubies so nothing runs twice.
           - '3.4'
           - '3.3'
-          - '3.2'
 
     steps:
+      # Release PRs only carry the version bump and CHANGELOG: the steps skip but the job
+      # still reports SUCCESS, so a required check on it never blocks their auto-merge.
+      - name: Skip on release PR
+        if: startsWith(github.head_ref, 'release/v')
+        run: echo "Release PR — matrix tests skipped (no Ruby source changes)."
       - uses: actions/checkout@v7
+        if: ${{ !startsWith(github.head_ref, 'release/v') }}
       - name: Set up Ruby
+        if: ${{ !startsWith(github.head_ref, 'release/v') }}
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
       - name: Run tests
+        if: ${{ !startsWith(github.head_ref, 'release/v') }}
         run: bundle exec rake test
