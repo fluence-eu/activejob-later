@@ -7,6 +7,9 @@ gemspec
 gem "minitest"
 gem "rake"
 
+# Generates the per-activejob-version Gemfiles under gemfiles/ for the CI matrix.
+gem "appraisal", require: false
+
 # Curated dev/CI tooling — pulls in rubocop, reek, flog, flay, yard,
 # yardstick, simplecov, undercover (and brakeman + bundler-audit +
 # ruby_audit which a pure gem doesn't actually invoke but the install

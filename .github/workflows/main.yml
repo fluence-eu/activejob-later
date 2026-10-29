@@ -13,16 +13,36 @@ jobs:
     permissions:
       contents: read
 
-    name: Ruby ${{ matrix.ruby }}
+    name: ${{ matrix.name }}
     strategy:
       fail-fast: false
       matrix:
-        ruby:
+        include:
           # 4.0 is covered by coverage-measure.yml (test) and
           # rubocop-pr.yml (lint) — keep this list to the non-coverage
           # Rubies so nothing runs twice.
-          - '3.4'
-          - '3.3'
+          - name: Ruby 3.4 / activejob latest
+            ruby: '3.4'
+            gemfile: Gemfile
+          - name: Ruby 3.3 / activejob latest
+            ruby: '3.3'
+            gemfile: Gemfile
+          # One Ruby per activejob minor, kept in sync with `Appraisals`.
+          - name: Ruby 3.3 / activejob 7.1
+            ruby: '3.3'
+            gemfile: gemfiles/activejob_7.1.gemfile
+          - name: Ruby 3.3 / activejob 7.2
+            ruby: '3.3'
+            gemfile: gemfiles/activejob_7.2.gemfile
+          - name: Ruby 3.3 / activejob 8.0
+            ruby: '3.3'
+            gemfile: gemfiles/activejob_8.0.gemfile
+          - name: Ruby 3.4 / activejob 8.1
+            ruby: '3.4'
+            gemfile: gemfiles/activejob_8.1.gemfile
+
+    env:
+      BUNDLE_GEMFILE: ${{ github.workspace }}/${{ matrix.gemfile }}
 
     steps:
       # Release PRs only carry the version bump and CHANGELOG: the steps skip but the job
