@@ -2,25 +2,29 @@
 
 module ActiveJob
   module PerformLater
-    # Intermediate object returned by {Mixin#perform_later}: captures the
-    # next method call and enqueues it instead of invoking it.
+    # Intermediate object returned by {Mixin#perform_later} and
+    # {Mixin#job_later}: captures the next method call and enqueues — or
+    # only builds — it instead of invoking it.
     #
     # @api private
     class Proxy < BasicObject
       # @api private
       # @param target [Object] receiver the call will be replayed on
       # @param options [Hash] Active Job set options
+      # @param enqueue [Boolean] false to build the job without enqueuing it
       # @return [Proxy] a new proxy around target
-      def initialize(target, options)
+      def initialize(target, options, enqueue: true)
         @target = target
         @options = options
+        @enqueue = enqueue
       end
 
-      # Enqueues `method_name` on the captured target through the job
-      # class resolved by {PerformLater.job_for}.
+      # Enqueues — or only builds, for {Mixin#job_later} — `method_name`
+      # on the captured target through the job class resolved by
+      # {PerformLater.job_for}.
       #
       # @api private
-      # @return [ActiveJob::Base] the enqueued job instance
+      # @return [ActiveJob::Base] the enqueued, or built, job instance
       # @raise [NoMethodError] when the target does not respond to the
       #   method
       # @raise [ArgumentError] when a block is passed — blocks are not
@@ -36,9 +40,11 @@ module ActiveJob
                          "cannot enqueue '#{method_name}' with a block — blocks are not serializable"
         end
 
-        PerformLater.job_for(@target, method_name)
-                    .set(**@options)
-                    .perform_later(PerformLater.target_ref(@target), method_name.to_s, args, kwargs)
+        job = PerformLater.job_for(@target, method_name)
+        arguments = [PerformLater.target_ref(@target), method_name.to_s, args, kwargs]
+        return job.new(*arguments).set(@options) unless @enqueue
+
+        job.set(**@options).perform_later(*arguments)
       end
 
       # Human-readable description of the proxy.
