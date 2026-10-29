@@ -1,20 +1,37 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
-## [Unreleased]
+## [2026.10.29.162056] - 2026-10-29
+
+### Added
+
+- feat: add job_later to build a job without enqueuing it
 
 ### Build
 
+- build: quote VERSION the way the release bump expects
+- build: point repository links at fluence-eu/activejob-later
+- build!: rename the gem to activejob-later
+- build!: require Ruby 3.3
+- build: move to guardian-ci and ci-workflows@v7
 - build: add fluence-ci-tools tooling and gem metadata
 
 ### CI
 
+- ci: publish the gem to rubygems.org
+- ci: test every supported activejob minor through Appraisal
+- ci: align the workflows on guardian-ci
 - ci: wire fluence-eu/ci-workflows@v6 gates and release flow
 
 ### Documentation
 
+- docs: attribute pre-tag history to the v0.1.0 changelog section
 - docs: add changelog and contributing guide
 - docs: document the public API and wire the yardstick gate
+
+### Other
+
+- chore(license): assign the copyright to Fluence
 
 ### Style
 
