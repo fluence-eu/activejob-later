@@ -6,6 +6,9 @@ AllCops:
 # existing double-quote style rather than rewrite every file.
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+  # ci-workflows bumps the version with a sed that only matches `VERSION = '…'`.
+  Exclude:
+    - lib/active_job/perform_later/version.rb
 
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
