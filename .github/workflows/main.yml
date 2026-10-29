@@ -22,7 +22,6 @@ jobs:
           # Rubies so nothing runs twice.
           - '3.4'
           - '3.3'
-          - '3.2'
 
     steps:
       - uses: actions/checkout@v7

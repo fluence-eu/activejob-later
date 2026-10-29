@@ -18,7 +18,7 @@ cd activejob-perform_later
 bundle install
 ```
 
-Requires Ruby 3.2+.
+Requires Ruby 3.3+.
 
 ## Development
 
