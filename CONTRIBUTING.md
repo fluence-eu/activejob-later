@@ -106,7 +106,7 @@ Non-backward-compatible changes must be flagged with:
 ## Architecture
 
 ```
-lib/activejob-perform_later.rb           # Gem entry point (requires active_job + the extension)
+lib/activejob-later.rb                   # Gem entry point (requires active_job + the extension)
 lib/active_job/perform_later.rb          # Namespace, base_job configuration, job resolution
 lib/active_job/perform_later/
   version.rb                             # Semantic version (bumped by release workflow)

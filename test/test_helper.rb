@@ -18,7 +18,7 @@ end
 require "cgi/escape"
 require "active_job"
 require "global_id"
-require "activejob-perform_later"
+require "activejob-later"
 require "minitest/autorun"
 
 GlobalID.app = "ajpl-test"

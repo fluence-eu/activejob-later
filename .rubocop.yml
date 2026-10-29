@@ -12,7 +12,7 @@ Style/StringLiteralsInInterpolation:
 
 Naming/FileName:
   Exclude:
-    - lib/activejob-perform_later.rb
+    - lib/activejob-later.rb
 
 # Guard clauses that raise keep their multi-line if/end form for
 # readability — modifier form buries the raise at the end of the line.

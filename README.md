@@ -1,4 +1,4 @@
-# activejob-perform_later
+# activejob-later
 
 Run any method of any class, module or instance in the background through
 Active Job — no dedicated job class needed.

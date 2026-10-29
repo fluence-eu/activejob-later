@@ -3,7 +3,7 @@
 require_relative "lib/active_job/perform_later/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "activejob-perform_later"
+  spec.name          = "activejob-later"
   spec.version       = ActiveJob::PerformLater::VERSION
   spec.authors       = ["Jonathan PHILIPPE"]
   spec.summary       = "Run any method of any class in the background via Active Job"
