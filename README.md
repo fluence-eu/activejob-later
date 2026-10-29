@@ -51,6 +51,20 @@ perform_later_job :sync, on: :class do ... end      # Report.perform_later.sync
 perform_later_job :sync, on: :instance do ... end   # report.perform_later.sync
 ```
 
+## Building a job without enqueuing it
+
+`job_later` takes the same options and returns the job `perform_later` would
+enqueue, without enqueuing it — for APIs that take a job instance, such as
+Solid Queue batch callbacks:
+
+```ruby
+SolidQueue::Batch.enqueue(on_finish: import.job_later.finalize!) do
+  import.lines.each { |line| line.perform_later.process! }
+end
+```
+
+Job resolution and the errors below are the same as for `perform_later`.
+
 ## Configuration
 
 ```ruby
