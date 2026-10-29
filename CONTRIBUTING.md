@@ -13,8 +13,8 @@ Thanks for contributing! Here's how to get started:
 ## Setup
 
 ```bash
-git clone git@github.com:fluence-eu/activejob-perform_later.git
-cd activejob-perform_later
+git clone git@github.com:fluence-eu/activejob-later.git
+cd activejob-later
 bundle install
 ```
 
