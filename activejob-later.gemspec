@@ -10,7 +10,6 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/fluence-eu/activejob-perform_later"
   spec.license       = "MIT"
 
-  spec.metadata["allowed_push_host"] = "https://rubygems.pkg.github.com/fluence-eu"
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
   spec.metadata["changelog_uri"] = "#{spec.homepage}/blob/main/CHANGELOG.md"

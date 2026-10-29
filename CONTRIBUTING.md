@@ -150,6 +150,7 @@ GitHub Actions:
 - **prepare-release.yml** — `workflow_dispatch` stamps a dated version (`YYYY.MM.DD.HHMMSS`) and opens an auto-merged release PR
 - **release.yml** — on release PR merge, creates the tag + GitHub Release with the `.gem` attached
 - **publish.yml** — on Release published, pushes the gem to GitHub Packages
+- **publish-rubygems.yml** — on Release published, pushes the gem to rubygems.org through trusted publishing
 
 ---
 
