@@ -6,6 +6,6 @@ module ActiveJob
     #
     # @api public
     # @return [String] the current version
-    VERSION = '0.1.0'
+    VERSION = '2026.10.29.162056'
   end
 end
