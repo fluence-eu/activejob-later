@@ -4,9 +4,8 @@ require "simplecov"
 require "undercover/simplecov_formatter"
 
 SimpleCov.start do
-  add_filter "/test/"
   minimum_coverage 95
-  minimum_coverage_by_file 70
+  coverage(:line) { minimum 70, per: :file }
   formatter SimpleCov::Formatter::MultiFormatter.new(
     [
       SimpleCov::Formatter::HTMLFormatter,
