@@ -14,7 +14,9 @@ SimpleCov.start do
   )
 end
 
-require "cgi/escape"
+# globalid 1.4.0's CGI.unescape reads @@accept_charset, set only by cgi/util before Ruby 4.0
+# (removed there). SimpleCov 0.22 loaded it; 1.x doesn't, so Ruby 3.3/3.4 raised NameError.
+require RUBY_VERSION >= "4" ? "cgi/escape" : "cgi/util"
 require "active_job"
 require "global_id"
 require "activejob-later"
